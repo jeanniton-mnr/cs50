@@ -3,49 +3,54 @@
 // email: jeanniton.mnr@gmail.com
 // website: jeanniton.me
 
+/***********************************************************
+* This implementation of Trie here only works with key which
+* contains alphabet letters and/or apostrphes `'` and it's
+* case insensitive.
+***********************************************************/
 
 #include <string.h>
-#include <type.h>
+#include <ctype.h>
 
 #include "helper.h"
 #include "TrieNode.h"
-
-#define AlPHABET_SIZE   (26)
-#define CHILDREN_SIZE  (27)
 
 
 
 // Return a new TrieNode
 struct TrieNode *getNode()
 {
-    struct TrieNode *pNode = (struct TrieNode)malloc(sizeof(struct TrieNode));
+    struct TrieNode *pNode = (struct TrieNode *)malloc(sizeof(struct TrieNode));
+
     // Initialize this node children to NULL
     for(int index=0; index < CHILDREN_SIZE; index++)
     {
         pNode->children[index] = NULL;
     }
+
+    pNode->isEndOfWord = false;
+
     return pNode;
 };
 
 // Return the leaf index for this char
 int getCharIndex(char a)
 {
-    int index;
+    int index = -1;
     if(isalpha(a))
     {
-        index = (int)'a' - a;
+        index = a - (int)'a';
     }else
     {
         switch(a)
         {
             case '\'':
-                index = 27; // ALPHABET_SIZE + 1;
+                index = CHILDREN_SIZE - 1; // ALPHABET_SIZE + 1 ( -1, for array indexing);
                 break;
             default:
                 // Crash the program
-                char *msg = concatenate("Cannot get index for char: ", a);
-                // Crach function not yet implemented
-                crash(1, msg);
+                printf("Cannot get index for char `%i`.\n", a);
+                crash(1);
         }
     }
 
@@ -55,44 +60,67 @@ int getCharIndex(char a)
 
 // Insert a new Key into the TrieNode tree
 // If the key is a prefix, just mark the last
-// leaf IsEndOfWord
-void insert(TrieNode *root, const char *key)
+// leaf IsEndOfWord = true
+void insert(struct TrieNode *root, const char *key)
 {
-    TrieNode *crawl = root;
+    struct TrieNode *crawl = root;
     int index;
     int len = strlen(key);
     int level;
+    int keyChar;
 
     for(level = 0; level < len; level++)
     {
+        keyChar = tolower(key[level]);
         // Get the index for this char in key
-        index = getCharIndex(key[level]);
+        index = getCharIndex(keyChar);
         // Check to see if the leaf for index exists
         if(!crawl->children[index])
         {
             crawl->children[index] = getNode();
         }
-        crawl = children[index];
+        crawl = crawl->children[index];
     }
     // Mark the last char of this key
     crawl->isEndOfWord = true;
 };
 
-bool isInTrieNode(TrieNode *root, const char *key)
+bool isInTrieNode(struct TrieNode *root, const char *key)
 {
-    TrieNode *crawl = root;
+    struct TrieNode *crawl = root;
     int level;
-    int len = str(key);
+    int len = strlen(key);
     int index;
+    int keyChar;
 
     for(level = 0; level < len; level++)
     {
-        index = getCharIndex(key[level]);
+        keyChar = tolower(key[level]);
+        // Get the index for this char in key
+        index = getCharIndex(keyChar);
         if(!crawl->children[index]){
             return false;
         }
-        crawl = crawl->children(key[level]);
+        crawl = crawl->children[index];
     }
 
     return ( (crawl != NULL) && (crawl->isEndOfWord) );
+}
+
+bool destroy(struct TrieNode *root)
+{
+
+    for(int i = 0; i < CHILDREN_SIZE; i++)
+    {
+        if(root->children[i] != NULL)
+            destroy(root->children[i]);
+    }
+
+    if(root)
+    {
+        free(root);
+        root = NULL;
+    }
+
+    return true;
 }

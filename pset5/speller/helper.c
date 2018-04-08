@@ -1,28 +1,24 @@
 
-#include <cs50.h>
-#include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
-
-
-// Concatenate a string and a char
-char* concatenate (char *str, char c)
-{
-    char temp[2];
-    temp[0] = c;
-    temp[1] = '\0';
-
-    return concatenate(str, temp);
-};
-
-// Concatenate two strings
-char* concatenate (char *str1, char *str2)
-{
-    return strcat(str1, str2);
-};
+#include <ctype.h>
+#include <string.h>
 
 // Crash the program
-void crash (int errorCode, const char* msg)
+void crash (int errorCode)
 {
-    eprintf(msg);
+    printf("Program exits because of an expected error.\n");
+    printf("Error code: %i.\n", errorCode);
     exit(errorCode);
 };
+
+// Convert a string to lower case only
+char* strLower(char *str)
+{
+    int length = strlen(str);
+    for(int i = 0; i < length; i++)
+    {
+        str[i] = tolower(str[i]);
+    }
+    return str;
+}

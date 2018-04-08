@@ -15,7 +15,7 @@ HDRS = dictionary.h helper.h TrieNode.h
 LIBS =
 
 # space-separated list of source files
-SRCS = speller.c dictionary.c helper.c TrieNode.h
+SRCS = speller.c dictionary.c helper.c TrieNode.c
 
 # automatically generated list of object files
 OBJS = $(SRCS:.c=.o)
