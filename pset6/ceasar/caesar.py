@@ -30,8 +30,10 @@ def main():
             char_index = ord(char)
             encrypt_char = None
             if char.islower():
+                # ord('a') = 97
                 encrypt_char = ((char_index + key - 97) % 26) + 97
             elif char.isupper():
+                # ord('A') = 65
                 encrypt_char = ((char_index + key -65) %26) + 65
             else:
                 encrypt_char = char_index

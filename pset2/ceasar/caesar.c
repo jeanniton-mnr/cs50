@@ -10,7 +10,7 @@ int main(int argC, string argV[]){
     int plaintext_len;
 
     if(argC >= 2){
-        // Ask plainext from user
+        // Ask plaintext from user
         plaintext = get_string("plaintext:  ");
         // Get plaintext length
         plaintext_len = strlen(plaintext);

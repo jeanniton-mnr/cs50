@@ -1,7 +1,9 @@
 
 
 # Print mario wall
-
+# Author: Jeanniton Monero
+# email: jeanniton.mnr@gmail.com
+# website: jeanniton.me
 
 
 def main():

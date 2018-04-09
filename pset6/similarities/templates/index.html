@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="col">
+        <form action="/compare" enctype="multipart/form-data" method="post">
+
+            <!-- FILE1 INPUT -->
+            <div class="form-group">
+                <input class="form-control-file" type="file" name="FILE1" />
+            </div>
+
+            <!-- FILE2 INPUT -->
+            <div class="form-group">
+                <input class="form-control-file" type="file" name="FILE1" />
+            </div>
+
+            <!--ALGORITHM -->
+            <div class="form-group">
+                <!-- Blade genarator: (div.form-check>label.form-check-label>input.form-check-input)*3 -->
+
+                <!-- Compare line -->
+                <div class="form-check">
+                    <label for="algorithm" class="form-check-label">
+                        <input type="radio" name="algorithm" value="lines" class="form-check-input">
+                    </label>
+                </div>
+                <!-- compare sentences -->
+                <div class="form-check">
+                    <label for="algorithm" class="form-check-label">
+                        <input type="radio" name="algorithm" value="sentences" class="form-check-input">
+                    </label>
+                </div>
+                <!-- compare substrings -->
+                <div class="form-check">
+                    <label for="algorithm" class="form-check-label">
+                        <input type="radio" name="algorithm" value="substrings" class="form-check-input">
+                    </label>
+                    <input class="form-control" type="number" placeholder="length of substrings (N)" name="length" >
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Compare</button>
+
+
+        </form>
+    </div>
+
+{% endblock %}
