@@ -34,8 +34,7 @@ struct TrieNode *getNode()
 };
 
 // Return the leaf index for this char
-int getCharIndex(char a)
-{
+int getCharIndex(char a){
     int index = -1;
     if(isalpha(a))
     {

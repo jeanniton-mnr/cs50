@@ -1,0 +1,100 @@
+
+/* Stylize typeahead.js a la http://twitter.github.io/typeahead.js/css/examples.css */
+.tt-menu
+{
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #ccc;
+    margin-top: 1px;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+}
+.tt-suggestion.tt-cursor {
+    background-color: #0097cf;
+    color: #fff;
+    cursor: pointer;
+}
+.tt-suggestion {
+    margin: 0;
+    padding: 6px 12px;
+}
+
+.content-width{
+    margin:auto;
+    width: 620px;
+    max-width: 80%;
+}
+
+
+#header {
+    min-height: 420px;
+    background-color: yellow;
+    margin: 0;
+    background-size: cover;
+    text-align: center;
+    transition: 3s;
+    /* Center header content with flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-form .input-group .twitter-typeahead {
+    width: 80%;
+}
+
+#search-form .input-group .input-group-btn {
+    width: 20%;
+}
+
+.dict-info-box {
+    color: rgba(0, 0, 0, 0.65);
+    font-family: serif;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.form-float{
+    position: fixed;
+    top: 100px;
+}
+
+.dict-sub-header::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.dict-body{
+    color: black;
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+
+.dict-body p{ margin-bottom: 0.05rem; }
+
+.dict-body hr { margin-top:0; }
+
+.dict-lemma {
+    font-family: serif;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    padding-top: 0.75rem;
+}
+
+.dict-ipa { float: left;}
+
+.dict-classes { float: right; }
+
+.dict-classes a{ padding-right: 3px; }
+
+.dict-examples {
+    color: gray;
+    font-style: italic;
+    font-family: serif;
+}
+
+.dict-icon {
+    width: 16px;
+    height: auto;
+}

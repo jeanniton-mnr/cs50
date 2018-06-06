@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    MyDictionary
+{% endblock %}
+
+{% block main %}
+
+    <div class="dict-info-box">
+        <h2>Type a word to look up in MyDictionary</h2>
+        You can also download the dictionary for chrome (extension)
+        <a target="_blank" href="https://chrome.google.com/webstore/detail/my-dictionary/jhehenajiifngcndnlecbmcdobnkeglb">here</a>.
+    </div>
+
+    <!-- Handlebars template Starts-->
+    {% raw %}
+        <script id="dict-template" type="text/handlebars-template">
+            <div class="dict-body">
+                <!-- def-header STARTS -->
+                <div class="dict-header">
+                    <div class="dict-lemma">
+                        {{lemma}}
+                    </div>
+                    <div class="dict-sub-header">
+                        <span class="dict-ipa">
+                            <a href="javascript:void(0)" onclick="speech()"><img class="dict-icon" src="static/res/speaker.png" alt="speech icon"></a>
+                            <span>{{phoneme}}</span>
+                        </span>
+                        <!--
+                        <span class="dict-classes">
+                            {{#each classes}}<a href="#">{{@key}}</a>{{/each}}
+                        </span>
+                        -->
+                    </div>
+                </div>
+                <!-- def-header Ends -->
+
+                <!-- def-class Starts -->
+                {{#each classes}}
+                    <div class="dict-class">
+                        <span class="dict-class-name">{{@key}}</span>
+                        <hr>
+                        <ol>
+                            <!-- loop through each senses in class/this -->
+                            {{#each this}}
+                                <li>
+                                    <p class="dict-definition">{{definition}}</p>
+                                    {{#if examples.length }}
+                                    <p class="dict-examples">{{#each examples}}{{this}}; {{/each}}</p>
+                                    {{/if}}
+                                    {{#if antonyms }}
+                                    <p class="dict-antonyms"><img class="dict-icon" src="static/res/antonym.png" alt="antonym-icon">: {{#each antonyms}}{{this}}; {{/each}}</p>
+                                    {{/if}}
+                                    {{#if synonyms }}
+                                    <p class="dict-synonyms"><img class="dict-icon" src="static/res/synonym.png" alt="synonym-icon">: {{#each synonyms}}{{this}}; {{/each}}</p>
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                            <!-- loop through each senses Ends -->
+                        </ol>
+                    </div>
+                {{/each}}
+                <!-- def-class Ends -->
+            </div>
+        </script>
+    {% endraw %}
+    <!-- Handlebars template Ends-->
+
+{% endblock %}

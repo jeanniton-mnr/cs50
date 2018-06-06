@@ -7,12 +7,12 @@
 
             <!-- FILE1 INPUT -->
             <div class="form-group">
-                <input class="form-control-file" type="file" name="FILE1" />
+                <input class="form-control-file" type="file" name="file1" />
             </div>
 
             <!-- FILE2 INPUT -->
             <div class="form-group">
-                <input class="form-control-file" type="file" name="FILE1" />
+                <input class="form-control-file" type="file" name="file2" />
             </div>
 
             <!--ALGORITHM -->
@@ -23,18 +23,21 @@
                 <div class="form-check">
                     <label for="algorithm" class="form-check-label">
                         <input type="radio" name="algorithm" value="lines" class="form-check-input">
+                        Compare lines
                     </label>
                 </div>
                 <!-- compare sentences -->
                 <div class="form-check">
                     <label for="algorithm" class="form-check-label">
                         <input type="radio" name="algorithm" value="sentences" class="form-check-input">
+                        Compare sentences
                     </label>
                 </div>
                 <!-- compare substrings -->
                 <div class="form-check">
                     <label for="algorithm" class="form-check-label">
                         <input type="radio" name="algorithm" value="substrings" class="form-check-input">
+                        Compare substrings
                     </label>
                     <input class="form-control" type="number" placeholder="length of substrings (N)" name="length" >
                 </div>
